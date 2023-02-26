@@ -6,8 +6,12 @@ export type RouteConfig = RouteProps;
 
 export const routes: RouteConfig[] = [
   {
-    path: '/',
+    path: '/home',
     element: <HomePage />,
+  },
+  {
+    path: '/',
+    element: <Navigate to={'/home'} replace />,
     index: true,
   },
 ];
