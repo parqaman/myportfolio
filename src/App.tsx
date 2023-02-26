@@ -4,7 +4,7 @@ import { AppRoutes } from '../AppRoutes'
 function App() {
   return (
     <div className="App">
-      <HashRouter basename="https://parqaman.github.io/web-cv">
+      <HashRouter basename="/">
           <AppRoutes />
       </HashRouter>
     </div>
