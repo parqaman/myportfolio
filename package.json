@@ -1,5 +1,6 @@
 {
   "name": "web-cv",
+  "homepage": "https://parqaman.github.io/web-cv",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,8 +8,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "homepage": "https://parqaman.github.io/web-cv",
+    "deploy": "gh-pages -d dist",
     "preview": "vite preview"
   },
   "dependencies": {
