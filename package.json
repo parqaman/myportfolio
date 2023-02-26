@@ -1,8 +1,8 @@
 {
-  "name": "web-cv",
   "homepage": "https://parqaman.github.io/web-cv",
-  "private": true,
-  "version": "0.0.0",
+  "name": "web-cv",
+  "private": false,
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",

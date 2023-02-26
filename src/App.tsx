@@ -1,12 +1,12 @@
-import { BrowserRouter } from "react-router-dom"
+import { HashRouter } from "react-router-dom"
 import { AppRoutes } from '../AppRoutes'
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+      <HashRouter basename="https://parqaman.github.io/web-cv">
           <AppRoutes />
-      </BrowserRouter>
+      </HashRouter>
     </div>
   )
 }
