@@ -1,13 +1,12 @@
-import { Route, Routes } from "react-router-dom"
+import { HashRouter, Route, Routes } from "react-router-dom"
 import { AppRoutes } from '../AppRoutes'
-import { HomePage } from "./pages/HomePage"
 
 function App() {
   return (
     <div className="App">
-        <Routes>
-          <Route path="/" element={<HomePage/>} />
-        </Routes>
+      <HashRouter>
+        <AppRoutes />
+      </HashRouter>
     </div>
   )
 }
