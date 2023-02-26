@@ -2,7 +2,7 @@ import React from 'react';
 import { Navigate, Route, RouteProps, Routes, useLocation } from 'react-router-dom';
 import { HomePage } from './src/pages/HomePage'
 
-export type RouteConfig = RouteProps & { path: string; };
+export type RouteConfig = RouteProps;
 
 export const routes: RouteConfig[] = [
   {
