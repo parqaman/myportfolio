@@ -9,6 +9,15 @@ module.exports = {
       },
       borderWidth: {
         1.5: "1.5px",
+      },
+      fontFamily: {
+        base: ['Quicksand', 'cursive']
+      },
+      boxShadow: {
+        "mini": " 0 0 5px 1px rgba(0, 0, 0, 0)",
+      },
+      scale: {
+        mirror: "scaleX(-1)"
       }
     },
   },
