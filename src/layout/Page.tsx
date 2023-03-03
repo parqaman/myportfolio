@@ -6,7 +6,7 @@ export type PageProps = {
 
 export const Page = ({ children }: PageProps) => {
   return (
-    <main className="min-w-full min-h-max bg-primary">
+    <main className="w-full min-h-max px-4 bg-primary">
         {children}
     </main>
   )

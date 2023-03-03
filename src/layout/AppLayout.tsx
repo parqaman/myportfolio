@@ -6,19 +6,19 @@ import { Link } from 'react-scroll';
 
 const headerRightMenu = (
   <ul className="menu-horizontal py-3">
-    <li><Link className='p-3 mx-2 cursor-pointer hover:bg-slate-800 rounded-md' smooth to={'home'}>
+    <li className='flex flex-col items-center justify-center'><Link className='p-3 mx-2 cursor-pointer hover:bg-slate-800 rounded-md' smooth duration={500} to={'home'}>
       Home
     </Link></li>
 
-    <li><Link className='p-3 mx-2 cursor-pointer hover:bg-slate-800 rounded-md' smooth to={'about'}>
+    <li className='flex flex-col items-center justify-center'><Link className='p-3 mx-2 cursor-pointer hover:bg-slate-800 rounded-md' smooth duration={500} to={'about'}>
       About
     </Link></li>
 
-    <li><Link className='p-3 mx-2 cursor-pointer hover:bg-slate-800 rounded-md' smooth to={'projects'}>
-        Projects
+    <li className='flex flex-col items-center justify-center'><Link className='p-3 mx-2 cursor-pointer hover:bg-slate-800 rounded-md' isDynamic offset={-90} smooth duration={500} to={'tech-stacks'}>
+        Tech Stack
     </Link></li>
 
-    <li><Link className='p-3 mx-2 cursor-pointer hover:bg-slate-800 rounded-md' smooth to={'contact'}>
+    <li className='flex flex-col items-center justify-center'><Link className='p-3 mx-2 cursor-pointer hover:bg-slate-800 rounded-md' isDynamic offset={-30} smooth duration={500} to={'contact'}>
       Contact
     </Link></li>
   </ul>

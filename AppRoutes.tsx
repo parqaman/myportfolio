@@ -1,13 +1,13 @@
 import React from 'react';
 import { Navigate, Route, RouteProps, Routes, useLocation } from 'react-router-dom';
-import { HomePage } from './src/HomePage'
+import { MainPage } from './src/MainPage'
 
 export type RouteConfig = RouteProps;
 
 export const routes: RouteConfig[] = [
   {
     path: '/',
-    element: <HomePage />,
+    element: <MainPage />,
     index: true,
   },
 ];
