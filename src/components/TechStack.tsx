@@ -10,7 +10,7 @@ import postgresql from '../assets/postgresql.png'
 export const TechStack = () => {
   return (
     <div id='tech-stacks' className="min-h-screen flex  flex-col items-center justify-center">
-      <div className="max-w-4xl w-full">
+      <div className="content opacity-0 transition-all duration-700 max-w-4xl w-full">
         <div>
           <h1 className='text-4xl font-semibold'>Tech Stack.</h1>
           <p className='text-xl'>

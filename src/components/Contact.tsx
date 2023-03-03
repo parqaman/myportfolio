@@ -40,7 +40,7 @@ export const Contact = () => {
 
   return (
     <div id='contact' className="min-h-screen flex  flex-col items-center justify-center">
-    <div className="max-w-3xl w-full">
+    <div className="content opacity-0 transition-all duration-700 max-w-3xl w-full">
       <div>
         <h1 className='text-4xl font-semibold'>Get in touch.</h1>
         <p className='text-lg'>

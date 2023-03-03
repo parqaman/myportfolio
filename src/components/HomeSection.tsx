@@ -3,7 +3,7 @@ import giphy from '../assets/giphy.gif'
 export const HomeSection = () => {
   return (
     <div id='home' className="min-h-screen flex flex-col items-center">
-        <div className="max-w-3xl mt-52 flex flex-col gap-5">
+        <div className="content opacity-0 transition-all duration-1000 max-w-3xl mt-52 flex flex-col gap-5">
             <p className='text-lg'>Hello there! My name is</p>
             <h1 className='text-5xl sm:text-7xl font-semibold'>
                 Farouq Abdurrahman
