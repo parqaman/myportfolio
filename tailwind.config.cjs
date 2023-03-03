@@ -6,6 +6,9 @@ module.exports = {
       colors: {
         primary: "#0C0C0C",
         navbar: "#262626",
+      },
+      borderWidth: {
+        1.5: "1.5px",
       }
     },
   },

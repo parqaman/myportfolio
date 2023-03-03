@@ -1,6 +1,6 @@
 {
-  "homepage": "https://parqaman.github.io/web-cv",
-  "name": "web-cv",
+  "homepage": "https://parqaman.github.io/myportfolio",
+  "name": "myportfolio",
   "private": false,
   "version": "1.0.0",
   "type": "module",
@@ -15,11 +15,13 @@
     "daisyui": "^2.51.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-scroll": "^1.8.9",
     "react-router-dom": "^6.8.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
+    "@types/react-scroll": "^1.8.6",
     "@vitejs/plugin-react": "^3.1.0",
     "autoprefixer": "^10.4.13",
     "gh-pages": "^5.0.0",

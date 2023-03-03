@@ -6,9 +6,8 @@ export type AppHeaderProps = {
 
 export const AppHeader = ({headerRightMenu}: AppHeaderProps) => {
   return (
-    <div className="w-full bg-navbar fixed flex items-center justify-between p-2 shadow-md">
-        <p className="text-2xl font-semibold">FA</p>
-        <Nav>{headerRightMenu}</Nav>
+    <div className="w-full bg-primary z-10 border-b-navbar border-b-1.5 fixed flex items-center justify-center p-2">
+        {headerRightMenu}
     </div>
   );
 };

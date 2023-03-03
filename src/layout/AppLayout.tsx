@@ -2,15 +2,26 @@ import { BaseLayout, BaseLayoutProps } from './BaseLayout';
 
 export type AppLayoutProps = Partial<BaseLayoutProps>;
 import React from 'react';
+import { Link } from 'react-scroll';
 
 const headerRightMenu = (
-    <div>
-        <ul className="menu menu-horizontal px-1">
-            <li><a>About</a></li>
-            <li><a>Projects</a></li>
-            <li><a>Contact</a></li>
-        </ul>
-    </div>
+  <ul className="menu-horizontal py-3">
+    <li><Link className='p-3 mx-2 cursor-pointer hover:bg-slate-800 rounded-md' smooth to={'home'}>
+      Home
+    </Link></li>
+
+    <li><Link className='p-3 mx-2 cursor-pointer hover:bg-slate-800 rounded-md' smooth to={'about'}>
+      About
+    </Link></li>
+
+    <li><Link className='p-3 mx-2 cursor-pointer hover:bg-slate-800 rounded-md' smooth to={'projects'}>
+        Projects
+    </Link></li>
+
+    <li><Link className='p-3 mx-2 cursor-pointer hover:bg-slate-800 rounded-md' smooth to={'contact'}>
+      Contact
+    </Link></li>
+  </ul>
 )
 
 export const AppLayout = (props: AppLayoutProps) => {
