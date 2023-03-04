@@ -72,7 +72,7 @@ export const Contact = () => {
 
   return (
     <div id='contact' className="min-h-screen flex  flex-col items-center justify-center">
-    <div className="content opacity-0 transition-all duration-700  w-full">
+    <div className="content opacity-0 transition-all duration-700  w-full max-w-3xl">
       <div>
         <h1 className='text-4xl font-semibold'>Get in touch.</h1>
         <p className='text-lg'>
