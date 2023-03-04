@@ -9,9 +9,10 @@ export const AboutMe = () => {
                 This led me to pursue a degree in computer science.
             </p>
             <p className='text-xl'>
-                I am currently in my final year at Darmstadt University of Applied Sciences.
-                During one of my semesters I took electives modules such as Data Warehouse Technologies and Advanced Web Development, 
-                which I found very interesting.
+                I am currently in my final year at <strong>Darmstadt University of Applied Sciences</strong>.
+                During one of my semester, I had the opportunity to take two elective modules, 
+                namely <strong>Data Warehouse Technologies</strong> and <strong>Advanced Web Development</strong>,
+                which provided me with hands-on experience and exposure to the latest technologies in these fields. 
             </p>
         </div>
     </div>
