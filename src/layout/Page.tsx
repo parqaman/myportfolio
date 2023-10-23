@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 export type PageProps = {
   children: React.ReactNode;
@@ -6,8 +6,6 @@ export type PageProps = {
 
 export const Page = ({ children }: PageProps) => {
   return (
-    <main className="w-full min-h-max px-4 bg-primary">
-        {children}
-    </main>
-  )
-}
+    <main className="w-full min-h-max px-4 bg-transparent">{children}</main>
+  );
+};

@@ -1,13 +1,16 @@
-import { AppHeader, AppHeaderProps } from './AppHeader'
-import { Page, PageProps } from './Page'
+import { AppHeader, AppHeaderProps } from "./AppHeader";
+import { Page, PageProps } from "./Page";
 
 export type BaseLayoutProps = AppHeaderProps & PageProps;
 
-export const BaseLayout = ({ headerRightMenu, ...pageProps }: BaseLayoutProps) => {
+export const BaseLayout = ({
+  headerRightMenu,
+  ...pageProps
+}: BaseLayoutProps) => {
   return (
-    <div className='text-white'>
-        <AppHeader headerRightMenu={headerRightMenu} />
-        <Page {...pageProps} />
+    <div className="text-white bg-black">
+      <AppHeader headerRightMenu={headerRightMenu} />
+      <Page {...pageProps} />
     </div>
-  )
-}
+  );
+};
