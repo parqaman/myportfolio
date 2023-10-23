@@ -4,9 +4,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#0C0C0C",
+        primary: "#152735",
+        secondary: "#425464",
+        btn: "#364258",
+        hover_btn: "#0F1B24",
         navbar: "#262626",
-        input: "#3B3B3B",
       },
       borderWidth: {
         1.5: "1.5px",
