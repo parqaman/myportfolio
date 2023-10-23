@@ -32,7 +32,7 @@ export const TechStack = () => {
       initial="hidden"
       animate={inView ? "visible" : "hidden"}
     >
-      <div className="transition-all duration-700 max-w-4xl w-full">
+      <div className="transition-all duration-700 max-w-3xl w-full">
         <div>
           <h1 className="text-4xl font-semibold">Tech Stack.</h1>
           <p className="text-xl">Technologies I'm familiar with.</p>
@@ -50,7 +50,7 @@ export const TechStack = () => {
           ].map((tech) => (
             <motion.li
               key={tech.name}
-              className={`shadow-sm shadow-white flex flex-col items-center justify-between rounded-md pt-4`}
+              className={`shadow-sm shadow-white flex flex-col items-center justify-between rounded-md pt-3`}
               variants={{
                 hidden: { y: 20, opacity: 0 },
                 visible: {
@@ -67,7 +67,7 @@ export const TechStack = () => {
                   alt={tech.name}
                 />
               </div>
-              <p className="my-4">{tech.name}</p>
+              <p className="my-2">{tech.name}</p>
             </motion.li>
           ))}
         </div>
