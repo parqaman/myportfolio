@@ -2,6 +2,8 @@ import { object, string } from "yup";
 import React, { useRef } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 export const ContactSchema = object({
   name: string().required(),
@@ -72,10 +74,27 @@ export const Contact = () => {
     }
   };
 
+  const [ref, inView] = useInView({
+    triggerOnce: true, // Trigger animation only once when it comes into view
+    rootMargin: "0% 0% -50% 0%", // Offset to trigger animation when the center is reached
+  });
+
   return (
-    <div
+    <motion.div
+      ref={ref}
+      variants={{
+        hidden: { opacity: 0 },
+        visible: {
+          opacity: 1,
+          transition: {
+            duration: 1,
+          },
+        },
+      }}
+      initial="hidden"
+      animate={inView ? "visible" : "hidden"}
       id="contact"
-      className="min-h-screen flex  flex-col items-center justify-center"
+      className="h-screen flex flex-col items-center justify-center text-justify"
     >
       <div className="transition-all duration-700  w-full max-w-3xl">
         <div>
@@ -89,7 +108,7 @@ export const Contact = () => {
             <div className="flex flex-col gap-1">
               <label htmlFor="name">Name</label>
               <input
-                className="p-2 rounded-md focus:outline-none bg-input"
+                className="p-2 rounded-md focus:outline-none bg-secondary"
                 type="text"
                 name="name"
                 id="name"
@@ -98,7 +117,7 @@ export const Contact = () => {
             <div className="flex flex-col gap-1">
               <label htmlFor="email">Email</label>
               <input
-                className="p-2 rounded-md focus:outline-none bg-input"
+                className="p-2 rounded-md focus:outline-none bg-secondary"
                 type="email"
                 name="email"
                 id="email"
@@ -107,7 +126,7 @@ export const Contact = () => {
             <div className="flex flex-col gap-1">
               <label htmlFor="message">Message</label>
               <textarea
-                className="resize-none p-2 rounded-md focus:outline-none bg-input"
+                className="resize-none p-2 rounded-md focus:outline-none bg-secondary"
                 name="message"
                 id="message"
                 cols={30}
@@ -116,7 +135,7 @@ export const Contact = () => {
             </div>
             <button
               type="submit"
-              className="btn bg-navbar hover:bg-slate-800 text-white"
+              className="btn bg-btn hover:bg-hover_btn text-white border-none"
             >
               Send
             </button>
@@ -124,6 +143,6 @@ export const Contact = () => {
         </div>
       </div>
       <ToastContainer />
-    </div>
+    </motion.div>
   );
 };

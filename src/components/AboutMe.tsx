@@ -1,19 +1,26 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 export const AboutMe = () => {
-  const aboutRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: aboutRef,
-    offset: ["start center", "end end"],
+  const [ref, inView] = useInView({
+    triggerOnce: true, // Trigger animation only once when it comes into view
+    rootMargin: "0% 0% -50% 0%", // Offset to trigger animation when the center is reached
   });
 
   return (
     <motion.div
-      ref={aboutRef}
-      style={{
-        opacity: useTransform(scrollYProgress, [0, 1], [0, 1]),
+      ref={ref}
+      variants={{
+        hidden: { opacity: 0 },
+        visible: {
+          opacity: 1,
+          transition: {
+            duration: 1,
+          },
+        },
       }}
+      initial="hidden"
+      animate={inView ? "visible" : "hidden"}
       id="about"
       className="h-screen flex flex-col items-center justify-center text-justify"
     >

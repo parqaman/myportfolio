@@ -11,8 +11,8 @@ import { useInView } from "react-intersection-observer";
 
 export const TechStack = () => {
   const [ref, inView] = useInView({
-    triggerOnce: false, // Trigger animation only once when it comes into view
-    rootMargin: "0% 0% -75% 0%", // Offset to trigger animation when the center is reached
+    triggerOnce: true, // Trigger animation only once when it comes into view
+    rootMargin: "0% 0% -50% 0%", // Offset to trigger animation when the center is reached
   });
 
   return (
@@ -25,7 +25,6 @@ export const TechStack = () => {
         visible: {
           opacity: 1,
           transition: {
-            delayChildren: 0.3,
             staggerChildren: 0.2,
           },
         },
@@ -51,7 +50,7 @@ export const TechStack = () => {
           ].map((tech) => (
             <motion.li
               key={tech.name}
-              className="shadow-sm shadow-[#222222] flex flex-col items-center justify-between"
+              className={`shadow-sm shadow-white flex flex-col items-center justify-between rounded-md pt-4`}
               variants={{
                 hidden: { y: 20, opacity: 0 },
                 visible: {
@@ -61,7 +60,7 @@ export const TechStack = () => {
               }}
               whileHover={{ scale: 1.1 }}
             >
-              <div className="h-full flex items-end pb-1">
+              <div className="h-full flex items-center pb-1">
                 <img
                   className="w-[5.5rem] mx-auto"
                   src={tech.img}
