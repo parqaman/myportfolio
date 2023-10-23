@@ -30,9 +30,7 @@ export const Projects = () => {
     >
       <div className="transition-all duration-700 max-w-4xl w-full h-full pb-28">
         <div>
-          <h1 className="text-4xl font-semibold">
-            Projects and Contributions.
-          </h1>
+          <h1 className="text-4xl font-semibold">Projects.</h1>
           <p className="text-xl">
             A preview of some of the projects I've worked on and contributed to.
           </p>
