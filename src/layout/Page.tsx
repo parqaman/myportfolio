@@ -5,7 +5,5 @@ export type PageProps = {
 };
 
 export const Page = ({ children }: PageProps) => {
-  return (
-    <main className="w-full min-h-max px-4 bg-transparent">{children}</main>
-  );
+  return <main className="w-full min-h-max bg-transparent">{children}</main>;
 };
