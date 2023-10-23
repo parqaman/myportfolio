@@ -1,9 +1,9 @@
 import { AppLayout } from "./layout/AppLayout";
-import { HomeSection } from "./components/HomeSection";
 import { AboutMe } from "./components/AboutMe";
 import { TechStack } from "./components/TechStack";
 import { Contact } from "./components/Contact";
 import { MultiLayerParallax } from "./components/MultiLayerParallax";
+import { Projects } from "./components/Projects";
 
 export const MainPage = () => {
   return (
@@ -12,6 +12,7 @@ export const MainPage = () => {
       <div className="px-4">
         <AboutMe />
         <TechStack />
+        <Projects />
         <Contact />
       </div>
     </AppLayout>
