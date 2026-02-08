@@ -1,5 +1,6 @@
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { useTheme } from '../context/ThemeProvider'
+import { useState } from 'react'
 
 function ThemeToggle() {
     const { theme, toggleTheme } = useTheme()
@@ -26,6 +27,8 @@ function ThemeToggle() {
 }
 
 export default function Header() {
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
     const navItems = [
         { name: 'About', href: '#about' },
         { name: 'Experience', href: '#experience' },
@@ -33,39 +36,97 @@ export default function Header() {
         { name: 'Contact', href: '#contact' },
     ]
 
+    const handleNavClick = () => {
+        setMobileMenuOpen(false)
+    }
+
     return (
-        <motion.header
-            initial={{ y: -20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b border-stone-200"
-        >
-            <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-                {/* Spacer for centering */}
-                <div className="w-10 md:w-0"></div>
+        <>
+            <motion.header
+                initial={{ y: -20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.8 }}
+                className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b border-stone-200 dark:border-stone-800"
+            >
+                <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+                    {/* Spacer for centering */}
+                    <div className="w-10 md:w-0"></div>
 
-                {/* Desktop Navigation */}
-                <nav className="hidden md:flex items-center gap-8">
-                    {navItems.map((item) => (
-                        <a
-                            key={item.name}
-                            href={item.href}
-                            className="text-sm font-sans text-foreground-muted hover:text-foreground transition-calm"
+                    {/* Desktop Navigation */}
+                    <nav className="hidden md:flex items-center gap-8">
+                        {navItems.map((item) => (
+                            <a
+                                key={item.name}
+                                href={item.href}
+                                className="text-sm font-sans text-foreground-muted hover:text-foreground transition-calm"
+                            >
+                                {item.name}
+                            </a>
+                        ))}
+                    </nav>
+
+                    {/* Theme Toggle Button */}
+                    <ThemeToggle />
+
+                    {/* Mobile Menu Button */}
+                    <button
+                        className="flex flex-col gap-1.5 md:hidden"
+                        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                        aria-label="Toggle menu"
+                    >
+                        <motion.div
+                            animate={{ rotate: mobileMenuOpen ? 45 : 0, y: mobileMenuOpen ? 6 : 0 }}
+                            className="h-px w-6 bg-foreground-muted"
+                        />
+                        <motion.div
+                            animate={{ opacity: mobileMenuOpen ? 0 : 1 }}
+                            className="h-px w-6 bg-foreground-muted"
+                        />
+                        <motion.div
+                            animate={{ rotate: mobileMenuOpen ? -45 : 0, y: mobileMenuOpen ? -6 : 0 }}
+                            className="h-px w-6 bg-foreground-muted"
+                        />
+                    </button>
+                </div>
+            </motion.header>
+
+            {/* Mobile Menu */}
+            <AnimatePresence>
+                {mobileMenuOpen && (
+                    <>
+                        {/* Backdrop */}
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            onClick={() => setMobileMenuOpen(false)}
+                            className="fixed inset-0 bg-black/50 z-40 md:hidden"
+                        />
+
+                        {/* Menu Panel */}
+                        <motion.div
+                            initial={{ x: '100%' }}
+                            animate={{ x: 0 }}
+                            exit={{ x: '100%' }}
+                            transition={{ type: 'tween', duration: 0.3 }}
+                            className="fixed top-0 right-0 bottom-0 w-64 bg-background border-l border-stone-200 dark:border-stone-800 z-50 md:hidden"
                         >
-                            {item.name}
-                        </a>
-                    ))}
-                </nav>
-
-                {/* Theme Toggle Button */}
-                <ThemeToggle />
-
-                {/* Mobile Menu Button */}
-                <button className="flex flex-col gap-1.5 md:hidden">
-                    <div className="h-px w-6 bg-foreground-muted" />
-                    <div className="h-px w-6 bg-foreground-muted" />
-                </button>
-            </div>
-        </motion.header>
+                            <nav className="flex flex-col gap-1 p-6 mt-20">
+                                {navItems.map((item) => (
+                                    <a
+                                        key={item.name}
+                                        href={item.href}
+                                        onClick={handleNavClick}
+                                        className="text-base font-sans text-foreground-muted hover:text-foreground transition-calm py-3 px-4 rounded-lg hover:bg-background-secondary"
+                                    >
+                                        {item.name}
+                                    </a>
+                                ))}
+                            </nav>
+                        </motion.div>
+                    </>
+                )}
+            </AnimatePresence>
+        </>
     )
 }

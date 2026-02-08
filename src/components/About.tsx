@@ -3,7 +3,7 @@ import CodingCharacter from './CodingCharacter'
 
 export default function About() {
     return (
-        <section id="about" className="min-h-screen px-6 bg-background-secondary flex items-center justify-center">
+        <section id="about" className="min-h-screen px-6 py-20 md:py-0 bg-background-secondary flex items-center justify-center">
             <div className="max-w-6xl mx-auto w-full">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
                     {/* Left: Heading, Title, and Text content */}
@@ -32,7 +32,7 @@ export default function About() {
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, delay: 0.4 }}
-                        className="flex justify-center lg:justify-end"
+                        className="flex justify-center lg:justify-end mx-auto lg:mx-0"
                     >
                         <CodingCharacter />
                     </motion.div>

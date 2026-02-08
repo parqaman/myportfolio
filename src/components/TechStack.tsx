@@ -36,7 +36,7 @@ const skills = [
 
 export default function TechStack() {
   return (
-    <section id="tech" className="min-h-screen px-6 bg-background-secondary flex items-center justify-center">
+    <section id="tech" className="min-h-screen px-6 py-20 md:py-0 bg-background-secondary flex items-center justify-center">
       <div className="max-w-6xl mx-auto w-full">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
