@@ -21,20 +21,20 @@ const experiences = [
     },
     {
         company: "Proventa AG",
-        period: "Aug 2023 - Nov 2023",
+        period: "Aug 2023 - Feb 2024",
         location: "Frankfurt am Main, Germany",
         roles: [
             {
                 title: "Bachelor Thesis - Cloud Database",
                 responsibilities: [
-                    "Cloud Database Migration Roadmap (PostgreSQL to K8s)",
+                    "Cloud Database Migration Roadmap (VMs to K8s)",
                     "Migration Strategy Research for Containerized Workloads"
                 ]
             },
             {
                 title: "Cloud Database - Intern",
                 responsibilities: [
-                    "Proof of Concept: Containerized PostgreSQL Cluster (AWS)",
+                    "Proof of Concept: Self-managed Containerized PostgreSQL Cluster (AWS)",
                     "High Availability & Disaster Recovery Implementation"
                 ]
             }
