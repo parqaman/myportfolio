@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion'
-import { FloatingShapes, AbstractParticles, IsometricWorkspace, MinimalCharacter, GradientOrb } from './AnimationOptions'
 import CodingCharacter from './CodingCharacter'
 
 export default function About() {
