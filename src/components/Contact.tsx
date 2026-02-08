@@ -1,148 +1,137 @@
-import { object, string } from "yup";
-import React, { useRef } from "react";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import { motion } from 'framer-motion'
+import { useState } from 'react'
+import type { FormEvent } from 'react'
 
-export const ContactSchema = object({
-  name: string().required(),
-  email: string().email().required(),
-  message: string().required(),
-});
+export default function Contact() {
+    const [isSubmitting, setIsSubmitting] = useState(false)
+    const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
 
-export const Contact = () => {
-  const formRef = useRef<HTMLFormElement>(null);
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        setIsSubmitting(true)
+        setSubmitStatus('idle')
 
-  const contact_handler = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const name = formRef.current?.elements.namedItem(
-      "name"
-    ) as HTMLInputElement;
-    const email = formRef.current?.elements.namedItem(
-      "email"
-    ) as HTMLInputElement;
-    const message = formRef.current?.elements.namedItem(
-      "message"
-    ) as HTMLInputElement;
-    const data = {
-      name: name.value,
-      email: email.value,
-      message: message.value,
-    };
-    const isValid = await ContactSchema.isValid(data);
-    if (isValid) {
-      fetch("https://getform.io/f/a67e0906-f905-4e9b-a482-de9bdc7dce08", {
-        method: "POST",
-        body: new FormData(e.target as HTMLFormElement),
-      }).then(async (res) => {
-        if (res.status === 200) {
-          toast("Message sent successfully!", {
-            position: "bottom-center",
-            type: "success",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            draggable: true,
-            theme: "light",
-          });
-          formRef.current?.reset();
-        } else {
-          const data = await res.json();
-          toast(data.message, {
-            position: "bottom-center",
-            type: "error",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            draggable: true,
-            theme: "light",
-          });
+        try {
+            const response = await fetch('https://getform.io/f/a67e0906-f905-4e9b-a482-de9bdc7dce08', {
+                method: 'POST',
+                body: new FormData(e.target as HTMLFormElement)
+            })
+
+            if (response.ok) {
+                setSubmitStatus('success')
+                    ; (e.target as HTMLFormElement).reset()
+            } else {
+                setSubmitStatus('error')
+            }
+        } catch (error) {
+            setSubmitStatus('error')
+        } finally {
+            setIsSubmitting(false)
         }
-      });
-      formRef.current?.reset();
-    } else {
-      toast("Please fill all the fields correctly!", {
-        position: "bottom-center",
-        type: "error",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        draggable: true,
-        theme: "light",
-      });
     }
-  };
 
-  const [ref, inView] = useInView({
-    triggerOnce: true, // Trigger animation only once when it comes into view
-    rootMargin: "0% 0% -50% 0%", // Offset to trigger animation when the center is reached
-  });
+    return (
+        <section id="contact" className="section-spacing px-6 bg-background">
+            <div className="max-w-4xl mx-auto">
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className="text-center mb-16"
+                >
+                    <p className="text-sm uppercase tracking-widest text-foreground-muted mb-4 font-sans">
+                        Get in Touch
+                    </p>
+                    <h2 className="text-heading-1 font-serif font-light mb-6">
+                        Let's Work Together
+                    </h2>
+                    <p className="text-body text-calm max-w-2xl mx-auto">
+                        I'd love to hear from you!
+                    </p>
+                </motion.div>
 
-  return (
-    <motion.div
-      ref={ref}
-      variants={{
-        hidden: { opacity: 0 },
-        visible: {
-          opacity: 1,
-          transition: {
-            duration: 1,
-          },
-        },
-      }}
-      initial="hidden"
-      animate={inView ? "visible" : "hidden"}
-      id="contact"
-      className="h-screen flex flex-col items-center justify-center text-justify"
-    >
-      <div className="transition-all duration-700  w-full max-w-3xl">
-        <div>
-          <h1 className="text-4xl font-semibold">Get in touch.</h1>
-          <p className="text-lg">Great ideas are born from collaboration.</p>
-          <form
-            className="flex flex-col gap-4 mt-4"
-            ref={formRef}
-            onSubmit={contact_handler}
-          >
-            <div className="flex flex-col gap-1">
-              <label htmlFor="name">Name</label>
-              <input
-                className="p-2 rounded-md focus:outline-none bg-secondary"
-                type="text"
-                name="name"
-                id="name"
-              />
+                <motion.form
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                    onSubmit={handleSubmit}
+                    className="space-y-6"
+                >
+                    <div>
+                        <label htmlFor="name" className="block text-sm font-sans text-foreground-muted mb-2">
+                            Name
+                        </label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            required
+                            className="w-full px-4 py-3 bg-background-secondary border border-stone-200 dark:border-stone-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-calm text-foreground"
+                            placeholder="Your name"
+                        />
+                    </div>
+
+                    <div>
+                        <label htmlFor="email" className="block text-sm font-sans text-foreground-muted mb-2">
+                            Email
+                        </label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            required
+                            className="w-full px-4 py-3 bg-background-secondary border border-stone-200 dark:border-stone-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-calm text-foreground"
+                            placeholder="your.email@example.com"
+                        />
+                    </div>
+
+                    <div>
+                        <label htmlFor="message" className="block text-sm font-sans text-foreground-muted mb-2">
+                            Message
+                        </label>
+                        <textarea
+                            id="message"
+                            name="message"
+                            required
+                            rows={6}
+                            className="w-full px-4 py-3 bg-background-secondary border border-stone-200 dark:border-stone-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-calm resize-none text-foreground"
+                            placeholder="Tell me about your project..."
+                        />
+                    </div>
+
+                    <div className="flex flex-col items-center gap-4">
+                        <button
+                            type="submit"
+                            disabled={isSubmitting}
+                            className="px-8 py-3 bg-foreground-muted dark:bg-foreground-muted text-white dark:text-background rounded-full font-sans text-sm font-medium hover:opacity-90 transition-calm disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                            {isSubmitting ? 'Sending...' : 'Send Message'}
+                        </button>
+
+                        {submitStatus === 'success' && (
+                            <motion.p
+                                initial={{ opacity: 0, y: -10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                className="text-sm text-accent font-sans"
+                            >
+                                ✓ Message sent successfully! I'll get back to you soon.
+                            </motion.p>
+                        )}
+
+                        {submitStatus === 'error' && (
+                            <motion.p
+                                initial={{ opacity: 0, y: -10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                className="text-sm text-red-500 font-sans"
+                            >
+                                ✗ Something went wrong. Please try again.
+                            </motion.p>
+                        )}
+                    </div>
+                </motion.form>
             </div>
-            <div className="flex flex-col gap-1">
-              <label htmlFor="email">Email</label>
-              <input
-                className="p-2 rounded-md focus:outline-none bg-secondary"
-                type="email"
-                name="email"
-                id="email"
-              />
-            </div>
-            <div className="flex flex-col gap-1">
-              <label htmlFor="message">Message</label>
-              <textarea
-                className="resize-none p-2 rounded-md focus:outline-none bg-secondary"
-                name="message"
-                id="message"
-                cols={30}
-                rows={10}
-              ></textarea>
-            </div>
-            <button
-              type="submit"
-              className="btn bg-btn hover:bg-hover_btn text-white border-none"
-            >
-              Send
-            </button>
-          </form>
-        </div>
-      </div>
-      <ToastContainer />
-    </motion.div>
-  );
-};
+        </section>
+    )
+}

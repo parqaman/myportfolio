@@ -1,4 +1,75 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --color-background: 250 250 249;
+    --color-background-secondary: 245 245 244;
+    --color-foreground: 28 25 23;
+    --color-foreground-muted: 120 113 108;
+    --color-accent: 48 70 116;
+    --color-accent-light: 68 90 136;
+  }
+
+  .dark {
+    --color-background: 12 10 13;
+    --color-background-secondary: 22 20 23;
+    --color-foreground: 229 229 229;
+    --color-foreground-muted: 163 163 163;
+    --color-accent: 255 255 255;
+    --color-accent-light: 245 245 245;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-serif font-light;
+  }
+}
+
+@layer components {
+  .section-spacing {
+    @apply py-24 md:py-32;
+  }
+
+  .text-calm {
+    @apply text-foreground-muted leading-relaxed;
+  }
+
+  .card-calm {
+    @apply bg-background-secondary rounded-2xl p-8 shadow-sm hover:shadow-md transition-all duration-500;
+  }
+
+  .transition-calm {
+    @apply transition-all duration-700 ease-out;
+  }
+
+  .btn-primary-calm {
+    @apply px-8 py-3 bg-accent text-white rounded-full font-sans text-sm font-medium hover:bg-accent-light transition-calm;
+  }
+
+  .btn-secondary-calm {
+    @apply px-8 py-3 bg-transparent border border-stone-300 text-foreground rounded-full font-sans text-sm font-medium hover:bg-background-secondary transition-calm;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection styling */
+::selection {
+  background-color: rgba(120, 113, 108, 0.2);
+  color: inherit;
+}

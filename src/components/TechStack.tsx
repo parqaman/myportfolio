@@ -1,77 +1,89 @@
-import ansible from "../assets/ansible.png";
-import ReactImg from "../assets/react.png";
-import aws from "../assets/aws.png";
-import Node from "../assets/node.png";
-import Tailwind from "../assets/tailwind.png";
-import python from "../assets/python.png";
-import docker from "../assets/docker.png";
-import postgresql from "../assets/postgresql.png";
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import { motion } from 'framer-motion'
+import { Code2, Cloud, Wrench } from 'lucide-react'
 
-export const TechStack = () => {
-  const [ref, inView] = useInView({
-    triggerOnce: true, // Trigger animation only once when it comes into view
-    rootMargin: "0% 0% -50% 0%", // Offset to trigger animation when the center is reached
-  });
+const skills = [
+  {
+    category: "Cloud & Infrastructure",
+    icon: Cloud,
+    items: [
+      "Google Cloud Platform (GCP)",
+      "Amazon Web Services (AWS)",
+      "Kubernetes & Containerization",
+      "PostgreSQL & Database Management"
+    ]
+  },
+  {
+    category: "Development",
+    icon: Code2,
+    items: [
+      "Terraform (Infrastructure as Code)",
+      "TypeScript / JavaScript Frameworks",
+      "Python for Backend Development & Automation",
+      "Git & CI/CD"
+    ]
+  },
+  {
+    category: "FinOps & Strategy",
+    icon: Wrench,
+    items: [
+      "Cloud Cost Optimization",
+      "FinOps Maturity Assessment",
+      "Resource Lifecycle Management",
+      "Cloud Inventory & Asset Management"
+    ]
+  }
+]
 
+export default function TechStack() {
   return (
-    <motion.ul
-      ref={ref}
-      id="tech-stacks"
-      className="h-screen flex flex-col items-center justify-center"
-      variants={{
-        hidden: { opacity: 0 },
-        visible: {
-          opacity: 1,
-          transition: {
-            staggerChildren: 0.2,
-          },
-        },
-      }}
-      initial="hidden"
-      animate={inView ? "visible" : "hidden"}
-    >
-      <div className="transition-all duration-700 max-w-3xl w-full">
-        <div>
-          <h1 className="text-4xl font-semibold">Tech Stack.</h1>
-          <p className="text-xl">Technologies I'm familiar with.</p>
-        </div>
-        <div className="w-full grid grid-cols-2 sm:grid-cols-4 gap-8 text-center py-8">
-          {[
-            { name: "AWS", img: aws },
-            { name: "Ansible", img: ansible },
-            { name: "Docker", img: docker },
-            { name: "PostgreSQL", img: postgresql },
-            { name: "React", img: ReactImg },
-            { name: "Node", img: Node },
-            { name: "Tailwind", img: Tailwind },
-            { name: "Python", img: python },
-          ].map((tech) => (
-            <motion.li
-              key={tech.name}
-              className={`shadow-sm shadow-white flex flex-col items-center justify-between rounded-md pt-3`}
-              variants={{
-                hidden: { y: 20, opacity: 0 },
-                visible: {
-                  y: 0,
-                  opacity: 1,
-                },
-              }}
-              whileHover={{ scale: 1.1 }}
+    <section id="tech" className="min-h-screen px-6 bg-background-secondary flex items-center justify-center">
+      <div className="max-w-6xl mx-auto w-full">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="mb-20"
+        >
+          <p className="text-sm uppercase tracking-widest text-foreground-muted mb-4 font-sans">
+            Technical Toolkit
+          </p>
+          <h2 className="text-heading-1 font-serif font-light mb-6">
+            Skills & Expertise
+          </h2>
+          <p className="text-calm max-w-3xl">
+            I've built a versatile skill set that bridges development, infrastructure, and cost optimization.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {skills.map((skill, idx) => (
+            <motion.div
+              key={skill.category}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: idx * 0.15 }}
+              className="card-calm"
             >
-              <div className="h-full flex items-center pb-1">
-                <img
-                  className="w-[5.5rem] mx-auto"
-                  src={tech.img}
-                  alt={tech.name}
-                />
+              <div className="mb-6">
+                <skill.icon className="h-8 w-8 text-accent mb-4" strokeWidth={1.5} />
+                <h3 className="text-xl font-serif font-light">
+                  {skill.category}
+                </h3>
               </div>
-              <p className="my-2">{tech.name}</p>
-            </motion.li>
+              <ul className="space-y-3">
+                {skill.items.map((item) => (
+                  <li key={item} className="text-sm text-calm flex items-start gap-3">
+                    <span className="text-accent mt-1.5">—</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
           ))}
         </div>
       </div>
-    </motion.ul>
-  );
-};
+    </section>
+  )
+}
