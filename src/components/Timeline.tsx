@@ -25,7 +25,7 @@ const experiences = [
         location: "Frankfurt am Main, Germany",
         roles: [
             {
-                title: "Bachelor Thesis - Cloud Database",
+                title: "Cloud Database - Bachelor Thesis",
                 responsibilities: [
                     "Cloud Database Migration Roadmap (VMs to K8s)",
                     "Migration Strategy Research for Containerized Workloads"
