@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 export default function CodingCharacter() {
     return (
         <div className="relative w-full max-w-md mx-auto">
-            <svg viewBox="0 0 400 400" className="w-full h-auto">
+            <svg viewBox="60 90 340 220" className="w-full h-auto">
                 {/* Laptop */}
                 <g>
                     {/* Laptop base */}

@@ -25,7 +25,7 @@ export default function Hero() {
                 </h1>
 
                 <p className="text-body text-foreground-muted max-w-3xl mx-auto mb-16 leading-loose">
-                    IT Consultant specializing in Cloud Development and FinOps.
+                    IT Consultant specializing in Cloud Development and FinOps
                 </p>
             </motion.div>
 

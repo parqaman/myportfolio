@@ -10,8 +10,8 @@
     --color-background-secondary: 245 245 244;
     --color-foreground: 28 25 23;
     --color-foreground-muted: 120 113 108;
-    --color-accent: 48 70 116;
-    --color-accent-light: 68 90 136;
+    --color-accent: 28 25 23;
+    --color-accent-light: 68 65 63;
   }
 
   .dark {

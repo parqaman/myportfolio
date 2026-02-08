@@ -38,7 +38,7 @@ export default function Contact() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
-                    className="text-center mb-16"
+                    className="text-left mb-16"
                 >
                     <p className="text-sm uppercase tracking-widest text-foreground-muted mb-4 font-sans">
                         Get in Touch
@@ -46,9 +46,6 @@ export default function Contact() {
                     <h2 className="text-heading-1 font-serif font-light mb-6">
                         Let's Work Together
                     </h2>
-                    <p className="text-body text-calm max-w-2xl mx-auto">
-                        I'd love to hear from you!
-                    </p>
                 </motion.div>
 
                 <motion.form

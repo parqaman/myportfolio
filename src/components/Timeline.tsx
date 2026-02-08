@@ -3,7 +3,7 @@ import { Calendar, MapPin } from 'lucide-react'
 
 const experiences = [
     {
-        company: "Deloitte GmbH",
+        company: "Deloitte",
         period: "Apr 2024 - Present",
         location: "Frankfurt am Main, Germany",
         roles: [

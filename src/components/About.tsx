@@ -3,9 +3,9 @@ import CodingCharacter from './CodingCharacter'
 
 export default function About() {
     return (
-        <section id="about" className="min-h-screen px-6 py-20 md:py-0 bg-background-secondary flex items-center justify-center">
+        <section id="about" className="min-h-screen px-6 py-24 md:py-0 bg-background-secondary flex items-center justify-center">
             <div className="max-w-6xl mx-auto w-full">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     {/* Left: Heading, Title, and Text content */}
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
